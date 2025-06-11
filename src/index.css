@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --light-mode-border: 1px solid gainsboro;
+  --light-mode-btn-background-color: black;
+  --light-mode-btn-color: white;
+}
+
+@media screen and (min-width: 1020px) {
+  #home-right {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    gap: 20px;
+    width: 310px;
+    float: right;
+  }
+}
+
+@media screen and (max-width: 1017px) {
+  #home-right {
+    display: none;
+  }
+
+  #pages-option-container {
+    align-items: center !important;
+  }
+}
+
+@media screen and (max-width: 1148px) {
+  .home-left-option {
+    display: none;
+  }
+
+  #side-post-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  #pages-option-container {
+    align-items: flex-end !important;
+  }
+
+  .user-display-container {
+    display: none !important;
+  }
+}
+
+#home-left {
+  display: flex;
+  position: sticky;
+  gap: 30px;
+  top: 0;
+  flex-grow: 2.5;
+  min-width: 46px;
+  justify-content: flex-end;
+}
+
+.home-left-option {
+  font-size: 20px;
+}
+
+#pages-option-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+  gap: 20px;
+}
+
+.user-display-container {
+  display: flex;
+}
+
+.profile-img {
+  border: 1px solid black;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 100%;
+}
+
+.page-option-item {
+  display: flex;
+  gap: 15px;
+}
+
+.light-mode-btn {
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  padding: 5px 20px;
+  font-weight: bold;
+}
+
+.post {
+  border: var(--light-mode-border);
+  border-right: none;
+  border-left: none;
+  display: flex;  
+  padding: 8px 0;
+}
+
+.post-option-item {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.light-mode-middle-container {
+  margin: 0 20px 0;
+  border: var(--light-mode-border);
+  width: 577.550px;
+}
+
+.side-view-container {
+  display: flex;
+  flex-direction: column;
+  border: var(--light-mode-border);
+  border-radius: 20px;
+  padding: 15px;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.trend-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trend-main {
+  font-weight: bold;
+}
+
+.trend-sub {
+  color: gray;
+  font-size: smaller;
+}
+
+.more-options {
+  margin-left: auto;
+  font-weight: bold;
+  font-size: larger;
+}
