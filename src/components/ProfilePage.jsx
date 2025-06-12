@@ -3,7 +3,7 @@ import '../index.css'
 function ProfilePage() {
     return (
         <div className="light-mode-middle-container">
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
                 <div className="flex gap-[20px] w-full">
                     <div>&larr;</div>
                     <div className="flex flex-col">
@@ -19,12 +19,12 @@ function ProfilePage() {
                     h
                 </div>
                 <div className='flex w-full justify-between'>
-                    <div className='border border-solid border-amber-200 min-w-30 h-30 rounded-full absolute top-47 left-50 text-amber-50'>
+                    <div className='border border-solid border-amber-200 min-w-30 h-30 rounded-full absolute top-47 left-5 text-amber-50'>
                         A
                     </div>
-                    <button className='border rounded-full absolute right-30 top-65 px-4 py-2 pt-1.5 font-semibold'>Edit Profile</button>
+                    <button className='border rounded-full absolute right-5 top-65 px-4 py-2 pt-1.5 font-semibold'>Edit Profile</button>
                 </div>
-                <div className='flex flex-col pt-20 px-2.5'>
+                <div className='flex flex-col pt-18 px-2.5'>
                     <div className=''>
                         name
                     </div>
@@ -42,6 +42,12 @@ function ProfilePage() {
                             <strong>111</strong> Followers
                         </div>
                     </div>
+                </div>
+                <div className='flex w-full justify-between pt-5'>
+                    <button className='profile-toggle-page-btn'>Post</button>
+                    <button className='profile-toggle-page-btn'>Replies</button>
+                    <button className='profile-toggle-page-btn'>Media</button>
+                    <button className='profile-toggle-page-btn'>Likes</button>
                 </div>
 
             </div>

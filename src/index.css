@@ -143,3 +143,8 @@
   font-weight: bold;
   font-size: larger;
 }
+
+.profile-toggle-page-btn {
+  text-align: center;
+  width: 100%;
+}
