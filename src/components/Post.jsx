@@ -1,7 +1,8 @@
 import '../index.css'
 import PostOptions from './PostOptions'
 
-function Post() {
+function Post({content}) {
+
     return (
         <div className='post'>
             <div className='flex w-full px-2.5 gap-[10px]'>
@@ -24,7 +25,7 @@ function Post() {
                     </div>
                 </div>
                 <div className='post-content'>
-                    Hello this is my tweet.
+                    {content}
                 </div>
                 < PostOptions />
                 </div>

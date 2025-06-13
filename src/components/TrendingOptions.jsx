@@ -3,7 +3,7 @@ import '../index.css'
 function TrendingOptions() {
     return (
        <div id="home-right">
-        <input className='search' placeholder="Search" />
+        <input className='pl-2.5 pt-2.5' placeholder="Search" />
         <div className="h-[460px] side-view-container">
             <div className='text-2xl font-bold pb-1'>Trends</div>
             <div className='flex flex-col h-full justify-around'>

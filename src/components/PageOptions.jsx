@@ -12,11 +12,11 @@ function PageOptions() {
                   </div>
                   <div className='page-option-item'>
                     <div className='profile-img'></div>
-                    <a href="/" className='home-left-option'>Dailies</a>
+                    <a href="/dailies" className='home-left-option'>Dailies</a>
                   </div>
                   <div className='page-option-item'>
                     <div className='profile-img'></div>
-                    <a href="/" className='home-left-option'>Profile</a>
+                    <a href="/profile" className='home-left-option'>Profile</a>
                   </div>
                   <div className='page-option-item'>
                     <div className='profile-img'></div>
