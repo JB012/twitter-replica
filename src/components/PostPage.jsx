@@ -1,13 +1,82 @@
 import PostOptions from "./PostOptions"
 import Post from "./Post"
 import '../index.css'
+import {useParams, useNavigate} from 'react-router-dom'
 
-function PostPage() {
+function PostFooterInfo({dateInfo, views}) {
+    const date = new Date(dateInfo);
+    const monthDict = {1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: 
+        "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"};
+    const getMeridiem = (hour) => hour < 12 ? "AM" : "PM";
+    const hour = date.getHours();
+    const minutes = date.getMinutes();
+    const meridiem = getMeridiem(hour);
+    const month = date.getMonth();
+    const day = date.getDay();
+    const year = date.getFullYear();
+
+    return (
+        <div>
+            {hour}:{minutes} {meridiem} &middot; {monthDict[month]} {day}, {year} &middot; <strong>{getViews(views)}</strong> Views
+        </div>
+    );
+}
+
+
+function getLetter(views) {
+    if (views < 1000) {
+        return "None";
+    }
+    else if (views < 1000000) {
+        return "K";
+    }
+    else if (views < 1000000000) {
+        return "M";
+    }
+    else {
+        return "B";
+    }
+}
+
+function getViews(views) {
+    const letter = getLetter(views);
+    const viewString = views.toString();
+    if (letter === "K") {
+        const lastThreeNums = Number(viewString.substring(viewString.length - 3));
+        if (isNaN(lastThreeNums) === false) {
+            if (lastThreeNums < 100) {
+                return `${viewString.slice(0,-3)}K`;
+            }
+            else {
+                return `${viewString.slice(0,-3)}.${viewString[viewString.length - 3]}K`;
+            }
+        }
+        else {
+            return "0";
+        }
+    }
+    else if (letter === "M" || letter === "B") {
+        return `${viewString[0]}.${viewString[1]}${letter}`;
+    }
+    else {
+        return viewString;
+    }
+    
+}
+
+function PostPage({users}) {
+    const {userID, postID} = useParams();
+    const navigate = useNavigate();
+
+    const posts = JSON.parse(window.localStorage.getItem("posts"));
+    const postInfo = posts.find((post) => post.userID === userID && post.postID === postID);
+    const userInfo = users.find((user) => user.userID);
+    
     return(
     <div className='light-mode-middle-container'>
         <div className="flex px-2 w-full">
             <div className="flex gap-[20px] w-full">
-                <div className="text-xl"> &larr;</div>
+                <div className="text-2xl cursor-pointer" onClick={() => navigate("/")}> &larr;</div>
                 <div className="text-xl font-bold"> Post</div>
             </div>
         </div>
@@ -21,8 +90,8 @@ function PostPage() {
                             </div>
                             <div className='user-display-container w-full'>
                                 <div className='flex flex-col'>
-                                <div className="font-bold">name</div>
-                                <div>@name</div>
+                                <div className="font-bold">{userInfo.name}</div>
+                                <div>@{userInfo.userID}</div>
                                 </div>
                                 
                                 <div className='more-options'>
@@ -33,16 +102,14 @@ function PostPage() {
                     </div>
                 </div>
                 <div className="post-content">
-                    This is a tweet.
+                    {postInfo.postText}
                 </div>
-                <div>
-                    3:31 PM &middot; Jun 9, 2025 &middot; <strong>95K</strong> Views
-                </div>
+                <PostFooterInfo dateInfo={postInfo.datePosted} views={postInfo.metrics.views}/>
                 <div className='flex gap-[70px]'>
-                    <div className='post-option-item'> <div>&#128488;</div> <div>100</div></div>
-                    <div className='post-option-item'> <div>&#10227;</div> <div>200</div></div>
-                    <div className='post-option-item'> <div>&hearts;</div> <div>300</div></div>
-                    <div className='post-option-item'> <div>&#128278;</div> <div>282</div></div>
+                    <div className='post-option-item'> <div>&#128488;</div> <div>{postInfo.metrics.comments}</div></div>
+                    <div className='post-option-item'> <div>&#10227;</div> <div>{postInfo.metrics.reposts}</div></div>
+                    <div className='post-option-item'> <div>&hearts;</div> <div>{postInfo.metrics.likes}</div></div>
+                    <div className='post-option-item'> <div>&#128278;</div> <div>{postInfo.metrics.bookmarks}</div></div>
                     <div className='flex ml-auto'>
                         <div className='post-option-item'>&#128278;</div>
                     </div>

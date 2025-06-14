@@ -1,19 +1,22 @@
 import express from 'express'
 import cors from 'cors'
-import postData from '../data/posts.json' with {type: "json"}
+import postsData from '../data/posts.json' with {type: "json"}
+import usersData from '../data/users.json' with {type: "json"}
 
 const app = express();
-const portNumber = 8010;
-let posts;
+const portNumber = 8080;
 
 app.use(cors())
 
-console.log(posts);
+app.get("/postsData", (req, res) => {
+    res.json(postsData);
+});
+
+app.get("/usersData", (req, res) => {
+    res.json(usersData);
+});
+
 
 app.listen(portNumber);
-
-app.get("/postData", (req, res) => {
-    res.json(postData)
-});
 
 console.log(`http://localhost:${portNumber}`);

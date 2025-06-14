@@ -1,7 +1,7 @@
 [
     {
         "name": "React",
-        "id": "@react",
+        "userID": "reactjs",
         "followersNum": 812000,
         "followingNum": 258,
         "headerPicture": "",
@@ -10,7 +10,7 @@
     },
     {
         "name": "Node.js",
-        "id": "@nodejs",
+        "userID": "nodejs",
         "followersNum": 899100,
         "followingNum": 607,
         "headerPicture": "",
@@ -19,7 +19,7 @@
     },
     {
         "name": "GitHub",
-        "id": "@github",
+        "userID": "github",
         "followersNum": 26000000,
         "followingNum": 328,
         "headerPicture": "",
@@ -28,7 +28,7 @@
     },
     {
         "name": "Visual Studio Code",
-        "id": "@code",
+        "userID": "code",
         "followersNum": 752000,
         "followingNum": 138,
         "headerPicture": "",
@@ -37,7 +37,7 @@
     },
     {
         "name": "Angular",
-        "id": "@angular",
+        "userID": "angular",
         "followersNum": 487400,
         "followingNum": 303,
         "headerPicture": "",
@@ -46,7 +46,7 @@
     },
     {
         "name": "TypeScript",
-        "id": "@typescript",
+        "userID": "typescript",
         "followersNum": 386000,
         "followingNum": 50,
         "headerPicture": "",

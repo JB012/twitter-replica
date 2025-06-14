@@ -1,6 +1,7 @@
 [
     {
-        "userID": "@reactjs",
+        "userName": "React",
+        "userID": "reactjs",
         "postID": "1915082330806407433",
         "postText": "Today we're sharing that View Transitions and Activity are ready to try in the experimental channel, along with docs and updates on other areas we're actively working on:",
         "postMedia": "",
@@ -9,7 +10,8 @@
         "comments": ["1915082547144327374"]
     },
     {
-        "userId": "@reactjs",
+        "userName": "React",
+        "userID": "reactjs",
         "postID": "1915082547144327374",
         "postText": "View Transitions are now ready to try in react@experimental.\nThey’ve been tested in production and are stable, but the final API may change as we iterate on feedback. Check out the docs to see how to add animations to your React app:",
         "postMedia": {"image": "", "video": ""},
@@ -18,7 +20,8 @@
         "comments": []
     },
     {
-        "name": "@nodejs",
+        "userName": "Node",
+        "userID": "nodejs",
         "postID": "1930235836223652237",
         "postText": "Just getting started with Node.js? JSConf 2025 is the place to dive deeper. 👩‍💻\nWhether you're building your first server, contributing to the ecosystem, or just curious how it all works, come collaborate with like minded devs at #JSConf.\n🎟️ https://hubs.la/Q03nR37f0",
         "postMedia": {"image": "", "video": ""},
@@ -27,7 +30,8 @@
         "comments": []
     },
     {
-        "name": "@nodejs",
+        "userName": "Node",
+        "userID": "nodejs",
         "postID": "1929872944504705024",
         "postText": "Are you currently hiring for a role that includes using Node.js? Reply with a link to the opening and any relevant context.\nIf you're not, we'd appreciate a repost for visibility 💚",
         "postMedia": {"image": "", "video": ""},
@@ -36,7 +40,8 @@
         "comments": []
     },
     {
-        "name": "@github",
+        "userName": "Github",
+        "userID": "github",
         "postID": "1929304452709666987",
         "postText": "Ready to level up as a junior engineer? We've got tips to help you navigate early career challenges, learn fast, and turn mistakes into growth. 🚀\nNot so junior anymore? This guide also shares how you can support your teammates as they begin their journeys. 👏\nFind tips and insights for everyone ⬇️\nhttps://github.blog/developer-skills/career-growth/how-to-thrive-as-a-junior-engineer-tips-and-insights/",
         "postMedia": {"image": "", "video": ""},
@@ -45,7 +50,8 @@
         "comments": []
     },
     {
-        "name": "@github",
+        "userName": "Github",
+        "userID": "github",
         "postID": "1931105181875224777",
         "postText": "Ready to level up as a junior engineer? We've got tips to help you navigate early career challenges, learn fast, and turn mistakes into growth. 🚀\nNot so junior anymore? This guide also shares how you can support your teammates as they begin their journeys. 👏\nFind tips and insights for everyone ⬇️\nhttps://github.blog/developer-skills/career-growth/how-to-thrive-as-a-junior-engineer-tips-and-insights/",
         "postMedia": {"image": "", "video": ""},
@@ -54,7 +60,8 @@
         "comments": []
     },
     {
-        "name": "@code",
+        "userName": "Visual Studio Code",
+        "userID": "code",
         "postID": "1920527499693334844",
         "postText": "💯 v1.100 of @code is here! And we’ve got some great updates for you, like:\n- Smarter chat responses with new tools\n- Improved multi-window support\n- Image and Streamable HTTP support for MCP servers\n…and so much more. https://aka.ms/VSCodeRelease\nHere are some of the highlights… 🧵",
         "postMedia": {"image": "", "video": ""},
@@ -63,7 +70,8 @@
         "comments": ["1920527500876116049"]
     },
     {
-        "name": "@code",
+        "userName": "Visual Studio Code",
+        "userID": "code",
         "postID": "1920527500876116049",
         "postText": "There are two new modes that floating windows can have: \n- Compact, which hides certain UI elements.\n- Always-on-top, which stays on top of all other windows\nPro tip: use it with the Chat view.",
         "postMedia": {"image": "", "video": ""},
@@ -72,7 +80,8 @@
         "comments": []
     },
     {
-        "name": "@angular",
+        "userName": "Angular",
+        "userID": "angular",
         "postID": "1920146610928894164",
         "postText": "Angular version 20 release is getting closer 🔥\nSave the date - May 29th.",
         "postMedia": {"image": "", "video": ""},
@@ -81,7 +90,8 @@
         "comments": []
     },
     {
-        "name": "@angular",
+        "userName": "Angular",
+        "userID": "angular",
         "postID": "1931033345422438539",
         "postText": "Learn how to build AI powered applications with Angular on the all new http://angular.dev/ai site.\nCheck it out and let us know what you think 🔥",
         "postMedia": {"image": "", "video": ""},
@@ -90,7 +100,8 @@
         "comments": []
     },
     {
-        "name": "@typescript",
+        "userName": "TypeScript",
+        "userID": "typescript",
         "postID": "1899469817863888958",
         "postText": "Today we're thrilled to announce our effort to port the TypeScript compiler and language service to native code, gaining a 10x speed boost in build times and editor responsiveness!",
         "postMedia": {"image": "", "video": ""},
@@ -99,7 +110,8 @@
         "comments": []
     },
     {
-        "name": "@typescript",
+        "userName": "TypeScript",
+        "userID": "typescript",
         "postID": "1925569825306464534",
         "postText": "Today we're announcing previews of the native port of TypeScript! These nightly previews will be available on npm and the VS Code marketplace!\nnpm install -D @​typescript/native-preview\nnpx tsgo --version\nRead up more on our blog!",
         "postMedia": {"image": "", "video": ""},
