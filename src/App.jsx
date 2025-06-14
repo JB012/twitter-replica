@@ -25,7 +25,7 @@ function App() {
     fetchAPI();
   }, []);
 
-  return (
+  return posts.length === 0 ? null : (
       <div className="flex min-h-full">
         <PageOptions/>
         <div className='flex flex-grow-2'>

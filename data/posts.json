@@ -6,7 +6,7 @@
         "postText": "Today we're sharing that View Transitions and Activity are ready to try in the experimental channel, along with docs and updates on other areas we're actively working on:",
         "postMedia": "",
         "datePosted": "2025-04-23T12:36:00",
-        "metrics": {"likes": 1200, "reposts": 254, "bookmarks": 315, "views": 237900},
+        "metrics": {"likes": 1200, "reposts": 254, "bookmarks": 315, "comments": 1, "views": 237900},
         "comments": ["1915082547144327374"]
     },
     {
@@ -66,7 +66,7 @@
         "postText": "💯 v1.100 of @code is here! And we’ve got some great updates for you, like:\n- Smarter chat responses with new tools\n- Improved multi-window support\n- Image and Streamable HTTP support for MCP servers\n…and so much more. https://aka.ms/VSCodeRelease\nHere are some of the highlights… 🧵",
         "postMedia": {"image": "", "video": ""},
         "datePosted": "2025-05-08T13:13:00",
-        "metrics": {"likes": 3200, "reposts": 417, "bookmarks": 774, "comments": 0, "views": 548000},
+        "metrics": {"likes": 3200, "reposts": 417, "bookmarks": 774, "comments": 1, "views": 548000},
         "comments": ["1920527500876116049"]
     },
     {

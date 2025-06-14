@@ -126,7 +126,10 @@ function PostPage({users}) {
             </div>
         </div>
         <div className="flex flex-col">
-            <Post />
+            {postInfo.comments.map((postID) => {
+                const findPost = posts.find((post) => post.postID === postID);
+                return <Post {...findPost} key={findPost.postID}/>  
+            })}
         </div>
     </div>
     );
