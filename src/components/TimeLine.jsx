@@ -43,7 +43,7 @@ function TimeLine({posts}) {
           <button className='light-mode-btn self-end' onClick={() => {if(input !== "") addPost(allPosts, setPosts, input)}}>Post</button>
         </div>
         <div className='flex flex-col'>
-          {allPosts.map(post => < Post content={post.postText} key={post.postID} userName={post.userName} userID={post.userID} postID={post.postID}/>)}
+          {allPosts.map(post => < Post {...post} key={post.postID} />)}
         </div>
       </div>
   );

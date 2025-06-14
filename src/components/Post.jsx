@@ -2,7 +2,7 @@ import '../index.css'
 import PostOptions from './PostOptions'
 import {useNavigate} from 'react-router-dom'
 
-function Post({content, userName, userID, postID}) {
+function Post({postText, userName, userID, postID, metrics}) {
     const navigate = useNavigate();
 
     return (
@@ -27,9 +27,9 @@ function Post({content, userName, userID, postID}) {
                     </div>
                 </div>
                 <div className='post-content'>
-                    {content}
+                    {postText}
                 </div>
-                < PostOptions />
+                < PostOptions {...metrics} />
                 </div>
             </div>
         </div>
