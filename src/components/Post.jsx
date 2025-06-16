@@ -1,35 +1,53 @@
 import '../index.css'
 import PostOptions from './PostOptions'
-import {useNavigate} from 'react-router-dom'
+import {Link} from 'react-router'
+import {useState} from 'react'
 
-function Post({postText, userName, userID, postID, metrics}) {
-    const navigate = useNavigate();
+const hostname = window.location.hostname;
 
+function PostTime({dateInfo}) {
+    const date = new Date(dateInfo);
+    const monthDict = {1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: 
+        "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"};
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return(
+    <div className='post-time-posted'>
+        &middot;  {monthDict[month]} {day}
+    </div>);
+}
+
+function Post({postText, userName, userID, postID, datePosted, metrics, handlePostAction, handleViews, handleDelete}) {
+    const [clickMoreOptions, setClickMoreOptions] = useState(false);
+    
     return (
-        <div className='post cursor-pointer' onClick={() => navigate(`${userID}/status/${postID}`)}>
+        <div className='post cursor-pointer'>
             <div className='flex w-full px-2.5 gap-[10px]'>
                 <div className='profile-img'>
                 B
                 </div>
                 <div className='flex flex-col w-full'>
-                <div className='flex justify-between gap-[4px]'>
-                    <div className='profile-post-name'>
-                    {userName}
+                    <div className='flex flex-col'>
+                        <div className='flex justify-between gap-[4px] relative'>
+                            <div className='profile-post-name'>
+                            {userName}
+                            </div>
+                            <div className='profile-post-id' >
+                            @{userID}
+                            </div>
+                            <PostTime dateInfo={datePosted}/>
+                            <div className='ml-auto' onClick={() => setClickMoreOptions(!clickMoreOptions)}>
+                            &#8230;
+                            </div>
+                            <div onClick={() => handleDelete(postID)} style={{"display": clickMoreOptions === false ? "none" : "block"}} className='border rounded-full border-none shadow-xl/30 top-2.5 absolute right-3 bg-white'>
+                                Delete
+                            </div>
+                        </div>
+                        <Link className='post-content' to={`http://${hostname}:5173/${userID}/status/${postID}`}>
+                            {postText}
+                        </Link>
                     </div>
-                    <div className='profile-post-id' >
-                    @{userID}
-                    </div>
-                    <div className='post-time-posted'>
-                    &middot;  time
-                    </div>
-                    <div className='ml-auto'>
-                    &#8230;
-                    </div>
-                </div>
-                <div className='post-content'>
-                    {postText}
-                </div>
-                < PostOptions {...metrics} />
+                    < PostOptions expanded={false} postID={postID} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} {...metrics} />
                 </div>
             </div>
         </div>

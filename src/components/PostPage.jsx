@@ -2,6 +2,7 @@ import PostOptions from "./PostOptions"
 import Post from "./Post"
 import '../index.css'
 import {useParams, useNavigate} from 'react-router-dom'
+import {useState} from 'react'
 
 function PostFooterInfo({dateInfo, views}) {
     const date = new Date(dateInfo);
@@ -11,8 +12,8 @@ function PostFooterInfo({dateInfo, views}) {
     const hour = date.getHours();
     const minutes = date.getMinutes();
     const meridiem = getMeridiem(hour);
-    const month = date.getMonth();
-    const day = date.getDay();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
     const year = date.getFullYear();
 
     return (
@@ -23,7 +24,8 @@ function PostFooterInfo({dateInfo, views}) {
 }
 
 
-function getLetter(views) {
+function getViews(views) {
+    function getLetter(views) {
     if (views < 1000) {
         return "None";
     }
@@ -36,9 +38,8 @@ function getLetter(views) {
     else {
         return "B";
     }
-}
+    }
 
-function getViews(views) {
     const letter = getLetter(views);
     const viewString = views.toString();
     if (letter === "K") {
@@ -64,19 +65,30 @@ function getViews(views) {
     
 }
 
-function PostPage({users}) {
+function addComment(parentPost, posts, setPosts, content, generateRandomNum, addPost) {
+    const postID = generateRandomNum();
+    setPosts(posts.map((post) => {
+        if (post.userID === parentPost.userID) {
+            post.metrics.comments += 1;
+            post.comments.push(postID);
+        }
+        return post;
+    }));
+    addPost(posts, setPosts, content, postID);
+}
+
+function PostPage({posts, setPosts, users, handlePostAction, generateRandomNum, addPost}) {
+    const [input, setInput] = useState("");
     const {userID, postID} = useParams();
     const navigate = useNavigate();
-
-    const posts = JSON.parse(window.localStorage.getItem("posts"));
     const postInfo = posts.find((post) => post.userID === userID && post.postID === postID);
-    const userInfo = users.find((user) => user.userID);
+    const userInfo = users.find((user) => user.userID === userID);
     
     return(
     <div className='light-mode-middle-container'>
         <div className="flex px-2 w-full">
             <div className="flex gap-[20px] w-full">
-                <div className="text-2xl cursor-pointer" onClick={() => navigate("/")}> &larr;</div>
+                <div className="text-2xl cursor-pointer" onClick={() => navigate(-1)}> &larr;</div>
                 <div className="text-xl font-bold"> Post</div>
             </div>
         </div>
@@ -105,23 +117,15 @@ function PostPage({users}) {
                     {postInfo.postText}
                 </div>
                 <PostFooterInfo dateInfo={postInfo.datePosted} views={postInfo.metrics.views}/>
-                <div className='flex gap-[70px]'>
-                    <div className='post-option-item'> <div>&#128488;</div> <div>{postInfo.metrics.comments}</div></div>
-                    <div className='post-option-item'> <div>&#10227;</div> <div>{postInfo.metrics.reposts}</div></div>
-                    <div className='post-option-item'> <div>&hearts;</div> <div>{postInfo.metrics.likes}</div></div>
-                    <div className='post-option-item'> <div>&#128278;</div> <div>{postInfo.metrics.bookmarks}</div></div>
-                    <div className='flex ml-auto'>
-                        <div className='post-option-item'>&#128278;</div>
-                    </div>
-                </div>
+                <PostOptions expanded={true} postID={postID} handlePostAction={handlePostAction} {...postInfo.metrics}/>
             </div>
             <div className="px-2.5">
                 <div className="flex py-2 post gap-[10px]">
                     <div className="profile-img">
                         A
                     </div>
-                    <input className="w-full outline-none" placeholder="Post a reply"></input>
-                    <button className="light-mode-btn">Reply</button>
+                    <input value={input} onChange={(e) => setInput(e.target.value)} className="w-full outline-none" placeholder="Post a reply"></input>
+                    <button className="light-mode-btn" onClick={() => addComment(postInfo, posts, setPosts, input, generateRandomNum, addPost)}>Reply</button>
                 </div>
             </div>
         </div>

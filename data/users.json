@@ -1,4 +1,14 @@
-[
+[  
+    {
+        "name": "User",
+        "userID": "user",
+        "followersNum": 0,
+        "followingNum": 6,
+        "headerPicture": "",
+        "profileInfo": {"bio": "This is my profile page",
+        "location": "", "dateJoined": "June 2025"},
+        "postAction": {"liked": [], "reposted": [], "bookmarked": []}
+    },
     {
         "name": "React",
         "userID": "reactjs",
@@ -6,7 +16,8 @@
         "followingNum": 258,
         "headerPicture": "",
         "profileInfo": {"bio": "The library for web and native user interfaces", "website": "react.dev", 
-        "location": "", "dateJoined": "July 2013"}
+        "location": "", "dateJoined": "July 2013"},
+        "postAction": {"liked": [], "reposted": [], "bookmarked": []}
     },
     {
         "name": "Node.js",
@@ -15,7 +26,8 @@
         "followingNum": 607,
         "headerPicture": "",
         "profileInfo": {"bio": "The Node.js JavaScript Runtime. 🐢🚀 Need help with Node.js? We've got a repo for that: http://github.com/nodejs/help", 
-        "website": "nodejs.org", "location": "✨🌍🌎🌏✨", "dateJoined": "November 2009"}
+        "website": "nodejs.org", "location": "✨🌍🌎🌏✨", "dateJoined": "November 2009"},
+        "postAction": {"liked": [], "reposted": [], "bookmarked": []}
     },
     {
         "name": "GitHub",
@@ -24,7 +36,8 @@
         "followingNum": 328,
         "headerPicture": "",
         "profileInfo": {"bio": "The AI-powered developer platform to build, scale, and deliver secure software.", "website": "github.com", 
-        "location": "San Francisco, CA", "dateJoined": "February 2008"}
+        "location": "San Francisco, CA", "dateJoined": "February 2008"},
+        "postAction": {"liked": [], "reposted": [], "bookmarked": []}
     },
     {
         "name": "Visual Studio Code",
@@ -33,7 +46,8 @@
         "followingNum": 138,
         "headerPicture": "",
         "profileInfo": {"bio": "Visual Studio Code with GitHub Copilot supercharges your code with AI-powered suggestions, right in your editor", 
-        "website": "code.visualstudio.com", "location": "Redmond, WA, USA", "dateJoined": "April 2015"}
+        "website": "code.visualstudio.com", "location": "Redmond, WA, USA", "dateJoined": "April 2015"},
+        "postAction": {"liked": [], "reposted": [], "bookmarked": []}
     },
     {
         "name": "Angular",
@@ -42,7 +56,8 @@
         "followingNum": 303,
         "headerPicture": "",
         "profileInfo": {"bio": "Deliver web apps with confidence 🚀", 
-        "website": "angular.dev", "location": "", "dateJoined": "October 2010"}
+        "website": "angular.dev", "location": "", "dateJoined": "October 2010"},
+        "postAction": {"liked": [], "reposted": [], "bookmarked": []}
     },
     {
         "name": "TypeScript",
@@ -51,6 +66,7 @@
         "followingNum": 50,
         "headerPicture": "",
         "profileInfo": {"bio": "TypeScript is a language for application-scale JavaScript development. It's a typed superset of JavaScript that compiles to plain JavaScript.", 
-        "website": "typescriptlang.org", "location": "Redmond, WA", "dateJoined": "September 2012"}
+        "website": "typescriptlang.org", "location": "Redmond, WA", "dateJoined": "September 2012"},
+        "postAction": {"liked": [], "reposted": [], "bookmarked": []}
     }
 ]
