@@ -17,35 +17,40 @@ function PostTime({dateInfo}) {
     </div>);
 }
 
-function Post({postText, userName, userID, postID, datePosted, metrics, handlePostAction, handleViews, handleDelete}) {
+function Post({postText, userName, userID, postID, datePosted, metrics, url, reposted, handlePostAction, handleViews, handleDelete}) {
     const [clickMoreOptions, setClickMoreOptions] = useState(false);
     
     return (
         <div className='post cursor-pointer'>
             <div className='flex w-full px-2.5 gap-[10px]'>
-                <div className='profile-img'>
-                B
-                </div>
                 <div className='flex flex-col w-full'>
-                    <div className='flex flex-col'>
-                        <div className='flex justify-between gap-[4px] relative'>
-                            <div className='profile-post-name'>
-                            {userName}
+                    <div className={reposted === false ? "hidden" : "flex w-full px-15 text-gray-600"}>
+                    You reposted                                                                
+                    </div>
+                    <div className='flex w-full px-2.5 gap-[10px]'>
+                        <div className='profile-img'>
+                                        B
+                                        </div>
+                        <div className='flex flex-col'>
+                            <div className='flex justify-between gap-[4px] relative'>
+                                <div className='profile-post-name'>
+                                {userName}
+                                </div>
+                                <div className='profile-post-id' >
+                                @{userID}
+                                </div>
+                                <PostTime dateInfo={datePosted}/>
+                                <div className='ml-auto' onClick={() => setClickMoreOptions(!clickMoreOptions)}>
+                                &#8230;
+                                </div>
+                                <div onClick={() => handleDelete(postID)} style={{"display": clickMoreOptions === false ? "none" : "block"}} className='border rounded-full border-none shadow-xl/30 top-2.5 absolute right-3 bg-white'>
+                                    Delete
+                                </div>
                             </div>
-                            <div className='profile-post-id' >
-                            @{userID}
-                            </div>
-                            <PostTime dateInfo={datePosted}/>
-                            <div className='ml-auto' onClick={() => setClickMoreOptions(!clickMoreOptions)}>
-                            &#8230;
-                            </div>
-                            <div onClick={() => handleDelete(postID)} style={{"display": clickMoreOptions === false ? "none" : "block"}} className='border rounded-full border-none shadow-xl/30 top-2.5 absolute right-3 bg-white'>
-                                Delete
-                            </div>
+                            <Link className='post-content' to={url === "" ?`http://${hostname}:5173/${userID}/status/${postID}` : url}>
+                                {postText}
+                            </Link>
                         </div>
-                        <Link className='post-content' to={`http://${hostname}:5173/${userID}/status/${postID}`}>
-                            {postText}
-                        </Link>
                     </div>
                     < PostOptions expanded={false} postID={postID} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} {...metrics} />
                 </div>

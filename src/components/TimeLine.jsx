@@ -24,7 +24,7 @@ function TimeLine({posts, handleDelete, handlePostAction, handleViews, addPost, 
           <button className='light-mode-btn self-end' onClick={() => {if(input !== "") addPost(allPosts, setPosts, input, generateRandomNum())}}>Post</button>
         </div>
         <div className='flex flex-col'>
-          {allPosts.map(post => < Post {...post} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={post.postID} />)}
+          {allPosts.map(post => < Post {...post} url={""} reposted={false} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={post.postID} />)}
         </div>
       </div>
   );

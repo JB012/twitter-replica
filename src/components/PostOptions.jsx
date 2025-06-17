@@ -66,7 +66,7 @@ function PostOptions({expanded, comments, reposts, bookmarks, likes, views, post
     
     return(
         expanded === false ?
-    (<div className='flex'>
+    (<div className='flex px-2.5'>
         <div className="post-option-item hover:text-blue-300"> <div>&#128488;</div> <div>{comments}</div></div>
         <div className={`post-option-item hover:text-green-500 ${handleTextColor(postID, findUser, "reposted")}`} onClick={() => handlePostAction(postID, "reposted")}> <div>&#10227;</div> <div>{reposts}</div></div>
         <div className={`post-option-item hover:text-red-500 ${handleTextColor(postID, findUser, "liked")}`} onClick={() => handlePostAction(postID, "liked")}> <div>&hearts;</div> <div>{likes}</div></div>

@@ -139,8 +139,8 @@ function addPost(allPosts, setPosts, contentInfo, randomNum) {
           <Routes>
             <Route path="/" element={<TimeLine generateRandomNum={generateRandomNum} addPost={addPost} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} posts={posts} users={users} />} />
             <Route path="/dailies" element={<DailiesPage />} />
-            <Route path="/profile" element={<ProfilePage handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} posts={posts} users={users}/>} />
-            <Route path="/:userID/status/:postID" element={<PostPage posts={posts} setPosts={setPosts} generateRandomNum={generateRandomNum} addPost={addPost} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} users={users}/>} />
+            <Route path="/:profile" element={<ProfilePage handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} posts={posts} users={users}/>} />
+            <Route path="/:userID/status/:postID" element={<PostPage posts={posts} users={users} setPosts={setPosts} generateRandomNum={generateRandomNum} addPost={addPost} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} />} />
           </Routes>
           <TrendingOptions/>
         </div>

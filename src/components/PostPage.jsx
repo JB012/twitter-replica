@@ -132,7 +132,7 @@ function PostPage({posts, setPosts, users, handlePostAction, generateRandomNum, 
         <div className="flex flex-col">
             {postInfo.comments.map((postID) => {
                 const findPost = posts.find((post) => post.postID === postID);
-                return <Post {...findPost} key={findPost.postID}/>  
+                return <Post reposted={false} url={""} {...findPost} key={findPost.postID}/>  
             })}
         </div>
     </div>
