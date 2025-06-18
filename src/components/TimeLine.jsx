@@ -19,9 +19,13 @@ function TimeLine({posts, handleDelete, handlePostAction, handleViews, addPost, 
             <div className='profile-img'>
               A
             </div>
-            <input value={input} onChange={(e) => setInput(e.target.value)} className=' min-w-[80%] min-h-[50%] text-xl px-2.5 py-0 border-[none] outline-none' max={280} placeholder="Create a post"></input>
+            <form className='w-full flex flex-col' action={() => {if(input !== "") addPost(allPosts, setPosts, input, generateRandomNum()); setInput("")}}>
+
+              <input value={input} onChange={(e) => setInput(e.target.value)} className=' min-w-[80%] min-h-[50%] text-xl px-2.5 py-0 border-[none] outline-none' max={280} placeholder="Create a post"></input>
+                
+              <button className='light-mode-btn ml-auto'>Post</button>
+            </form>
           </div> 
-          <button className='light-mode-btn self-end' onClick={() => {if(input !== "") addPost(allPosts, setPosts, input, generateRandomNum())}}>Post</button>
         </div>
         <div className='flex flex-col'>
           {allPosts.map(post => < Post {...post} url={""} reposted={false} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={post.postID} />)}

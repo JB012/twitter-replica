@@ -16,7 +16,12 @@ function PostTime({dateInfo}) {
         &middot;  {monthDict[month]} {day}
     </div>);
 }
-
+/*
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!--<path d="M 50 50 L 100 100 L 100 200 L 50 200 L 50 150 C 50 140 25 130 20 150 L 20 200 L 0 200" stroke="black" fill="transparent"/>-->
+  <path d="M 100 100 L 150 150 L 150 200 L 125 200 L 125 175 C 125 150 75 150 75 175 L 75 200 L 50 200 L 50 150 Z" />
+</svg>
+*/
 function Post({postText, userName, userID, postID, datePosted, metrics, url, reposted, handlePostAction, handleViews, handleDelete}) {
     const [clickMoreOptions, setClickMoreOptions] = useState(false);
     
@@ -31,7 +36,7 @@ function Post({postText, userName, userID, postID, datePosted, metrics, url, rep
                         <div className='profile-img'>
                                         B
                                         </div>
-                        <div className='flex flex-col'>
+                        <div className='flex flex-col w-full'>
                             <div className='flex justify-between gap-[4px] relative'>
                                 <div className='profile-post-name'>
                                 {userName}
@@ -47,7 +52,7 @@ function Post({postText, userName, userID, postID, datePosted, metrics, url, rep
                                     Delete
                                 </div>
                             </div>
-                            <Link className='post-content' to={url === "" ?`http://${hostname}:5173/${userID}/status/${postID}` : url}>
+                            <Link className='post-content w-full' to={url === "" ?`http://${hostname}:5173/${userID}/status/${postID}` : url}>
                                 {postText}
                             </Link>
                         </div>

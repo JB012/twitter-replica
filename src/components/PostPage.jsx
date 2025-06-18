@@ -124,8 +124,10 @@ function PostPage({posts, setPosts, users, handlePostAction, generateRandomNum, 
                     <div className="profile-img">
                         A
                     </div>
-                    <input value={input} onChange={(e) => setInput(e.target.value)} className="w-full outline-none" placeholder="Post a reply"></input>
-                    <button className="light-mode-btn" onClick={() => addComment(postInfo, posts, setPosts, input, generateRandomNum, addPost)}>Reply</button>
+                    <form className="flex flex-col w-full" action={() => {addComment(postInfo, posts, setPosts, input, generateRandomNum, addPost); setInput("")}}>
+                        <input value={input} onChange={(e) => setInput(e.target.value)} className="w-full outline-none" placeholder="Post a reply"></input>
+                        <button className="light-mode-btn ml-auto">Reply</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -8,26 +8,26 @@ function TrendingOptions() {
             <div className='text-2xl font-bold pb-1'>Trends</div>
             <div className='flex flex-col h-full justify-around'>
               <div className='trend-item'>
-                <div className='trend-sub'>Trending in United States</div>
-                <div className='trend-main'>JavaScript</div>
+                <div className='trend-sub'>Technology &middot; Trending</div>
+                <div className='trend-main'>React</div>
                 <div className='trend-sub'>3,000 posts</div>
               </div>
               
               <div className='trend-item'>
-                <div className='trend-sub'>Trending in United States</div>
+                <div className='trend-sub'>Technology &middot; Trending</div>
                 <div className='trend-main'>JavaScript</div>
-                <div className='trend-sub'>3,000 posts</div>
+                <div className='trend-sub'>1502 posts</div>
               </div>
               
               <div className='trend-item'>
-                <div className='trend-sub'>Trending in United States</div>
-                <div className='trend-main'>JavaScript</div>
-                <div className='trend-sub'>3,000 posts</div>
+                <div className='trend-sub'>Technology &middot; Trending</div>
+                <div className='trend-main'>TypeScript</div>
+                <div className='trend-sub'>612 posts</div>
               </div>
               <div className='trend-item'>
-                <div className='trend-sub'>Trending in United States</div>
-                <div className='trend-main'>JavaScript</div>
-                <div className='trend-sub'>3,000 posts</div>
+                <div className='trend-sub'>Technology &middot; Trending</div>
+                <div className='trend-main'>Code</div>
+                <div className='trend-sub'>125 posts</div>
               </div>
             </div>
         </div>  

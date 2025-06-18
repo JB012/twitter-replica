@@ -1,22 +1,50 @@
-import { useParams } from 'react-router-dom';
-import {useEffect, useState} from 'react'
+import { useParams, useNavigate } from 'react-router-dom';
+import { useState } from 'react'
 import Post from './Post';
 import '../index.css'
 
-
-
-function createRepostsTimeLine(posts, user, profilePosts, setProfilePosts, action) {
-    if (action === "Post") {
-        const repostedPosts = [];
+function ProfilePosts({postTab, user, posts, handleDelete, handlePostAction, handleViews}) {
+    if (postTab === "Likes") {
+        if (user.postAction.liked.length === 0) {
+            return (<div className='text-center justify-center'>
+                No post liked
+                </div>)
+        }
+        else {
+            return (<div className='flex flex-col h-full'>
+            {
+                user.postAction.liked.map((postID) => {
+                    const findPost = posts.find((post) => post.postID === postID);
+                    return <Post {...findPost} url={""} reposted={false} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={findPost.postID} />
+                })
+            }
+            </div>);
+        }
+    }
+    else if (postTab === "Posts") {
+        const repostedPosts = []
         const filteredPosts = posts.filter((post) => post.userID === "user");
         user.postAction.reposted.forEach((postID) => {
             const findPost = posts.find((post) => post.postID === postID);
             repostedPosts.push(findPost);
-        })
+        });
+        
+        const allPosts = [...new Set([...repostedPosts, ...filteredPosts])];
 
-        setProfilePosts([...repostedPosts, ...filteredPosts, ...profilePosts]);
+        if (allPosts.length === 0) {
+            return (<div className='text-center justify-center'>
+                No posts available
+                </div>)
+        }
+        else {
+            return (<div className='flex flex-col h-full'>
+            {allPosts.map((post) => {
+                return <Post {...post} url={""} reposted={false} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={post.postID} />
+            })}
+            </div>)
+        }
     }
-    else if (action === "Reply") {
+    else if (postTab === "Replies") {
         const repliedPosts = [];
         posts.forEach((post) => {
             post.comments.forEach((commentPostID) => {
@@ -27,45 +55,40 @@ function createRepostsTimeLine(posts, user, profilePosts, setProfilePosts, actio
             });
         });
 
-        setProfilePosts([...repliedPosts, ...profilePosts]);
-    }
-    else if (action === "Likes") {
-        const likedPosts = [];
-        user.postAction.liked.forEach((postID) => {
-            const findPost = posts.find((post) => post.postID === postID);
-            likedPosts.push(findPost);
-        });
-
-        setProfilePosts([...likedPosts, ...profilePosts]);
-
+        if (repliedPosts.length === 0) {
+            return (<div className='text-center justify-center'>
+                No replies available
+                </div>)
+        }
+        else {
+            return (<div className='text-center justify-center'> 
+            {repliedPosts.map((post) => {
+                return <Post {...post} url={post.url} reposted={false} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={post.postID} />
+            })}
+            </div>)
+        }
     }
     else {
-        //Media section
-        setProfilePosts([]);
+        return (<div className='text-center justify-center'>
+            No media posted
+        </div>)
     }
 }
 
 function ProfilePage({handleDelete, handlePostAction, handleViews, posts, users}) {
     const {profile} = useParams();
     const user = users.find((user) => user.userID === profile);
-    const [profilePosts, setProfilePosts] = useState([]);
-    const [postTab, setPostTab] = useState("Post");
-
-    useEffect(() => {
-        createRepostsTimeLine(posts, user, profilePosts, setProfilePosts, postTab);
-    }, []);
+    const [postTab, setPostTab] = useState("Posts");
+    const navigate = useNavigate();
 
     return (
         <div className="light-mode-middle-container">
             <div className="flex flex-col relative">
-                <div className="flex gap-[20px] w-full">
-                    <div>&larr;</div>
+                <div className="flex gap-[20px] px-1.5 py-1.5 w-full">
+                    <div className='font-bold text-2xl cursor-pointer' onClick={() => navigate(-1)}>&larr;</div>
                     <div className="flex flex-col">
-                        <div className='font-bold'>
-                            Posts
-                        </div>
-                        <div>
-                            100 posts
+                        <div className='text-xl'>
+                            Profile
                         </div>
                     </div>
                 </div>
@@ -98,28 +121,12 @@ function ProfilePage({handleDelete, handlePostAction, handleViews, posts, users}
                     </div>
                 </div>
                 <div className='flex w-full justify-between pt-5'>
-                    <button className={`profile-toggle-page-btn ${postTab === "Post" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Post")}>Post</button>
-                    <button className={`profile-toggle-page-btn ${postTab === "Reply" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Reply")}>Replies</button>
+                    <button className={`profile-toggle-page-btn ${postTab === "Post" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Posts")}>Post</button>
+                    <button className={`profile-toggle-page-btn ${postTab === "Replies" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Replies")}>Replies</button>
                     <button className={`profile-toggle-page-btn ${postTab === "Media" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Media")}>Media</button>
                     <button className={`profile-toggle-page-btn ${postTab === "Likes" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Likes")}>Likes</button>
                 </div>
-                <div className={`flex flex-col h-full ${profilePosts.length === 0 ? "text-center justify-center" : ""}`}>
-                    {
-                        profilePosts.length !== 0 ? profilePosts.map((post) => {
-                            if (postTab !== "Reply") {
-                                return < Post {...post} url={""} reposted={user.postAction.reposted.includes(post.postID) ? true : false} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={post.postID} />
-                            }
-                            else if (postTab !== "Media") {
-                                return < Post {...post} url={post.url} reposted={user.postAction.reposted.includes(post.postID) ? true : false} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} key={post.postID} />
-                            
-                            }
-                            else {
-                                //Media
-                                "No media found"
-                            }
-                        } ): "No posts found"
-                    }
-                </div>
+                <ProfilePosts posts={posts} postTab={postTab} user={user} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} />
                 
             </div>
         </div>

@@ -103,12 +103,8 @@ function App() {
 
   
 function handleDelete(postID) {
-    setPosts(posts.map((post) => {
-      if (post.userID === "user" && post.postID === postID) {
-        return;
-      }
-      return post;
-    }));
+  const findPost = posts.find((post) => post.postID === postID && post.userID === "user");
+  setPosts(posts.filter((post) => post !== findPost));
 }
 
 /* Twitter's post ID is 19 digits long */
