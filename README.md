@@ -1,12 +1,43 @@
-# React + Vite
+# Twitter Replica
+> Social media web application that replicates Twitter's design.
+ 
+Demo: 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How It's Used:
+Tech Used:
+* React
+* Express.js
+* TailwindCSS
 
-Currently, two official plugins are available:
+<img src="https://github.com/user-attachments/assets/712bb541-5cbb-48d6-8ff8-15b48ee33a86" width="50%" height="50%" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+* *Posting*
+  
+  Users are able to create posts via the home page or when commenting on another post. Additionally, they can like and repost on comments.
+<img src="https://github.com/user-attachments/assets/c89673e5-be04-4c40-80d6-45ac487750a3" width="50%" height="50%" />
 
-## Expanding the ESLint configuration
+* *Daily Goals*
+  
+  Users that complete the daily goals are able to receive rewards such as Verified Mode where they can unlock additional features (such as posts longer than 280 chars).
+<img src="https://github.com/user-attachments/assets/61b58779-ba5f-4914-a8dc-1e5f948dae73" width="50%" height="50%" />
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* *Profile*
+  
+  Users are able to view their profile and toggle between the liked posts, reposted posts, media posts, and their own posts.
+<img src="https://github.com/user-attachments/assets/74df9772-e2b0-4605-9fb2-5ec9a68435b9" width="50%" height="50%" />
+  
+* *Light/Dark Mode*
+  
+  Users can toggle between light and dark mode.
+<img src="https://github.com/user-attachments/assets/f5880b0e-1901-446c-9f63-ea6f5281e30b" width="50%" height="50%" />
+
+## How It Runs
+
+Open two terminals. In one terminal, enter "node server" in /src. In the other terminal enter *npm run dev* in /.
+
+## What I Learned
+
+* Responsive Web Design/CSS: I learned how vast CSS, especially when making websites for different screen sizes. Through media queries, I was able to make the website responsive.
+* Integrating Back-End to React: Using libraries such as Axios to send data from back-end (Express.js) to front-end (React).
+
