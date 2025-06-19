@@ -108,6 +108,9 @@ function ProfilePage({displayMode, handleDelete, handlePostAction, handleViews, 
                     <div>
                         @{user.userID}
                     </div>
+                    <div className='py-1.5'>
+                        {user.profileInfo.bio}
+                    </div>
                     <div className='py-3'>    	
                         &#128197; Joined {user.profileInfo.dateJoined}
                     </div>

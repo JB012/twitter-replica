@@ -1,9 +1,9 @@
 import '../index.css'
 import PostOptions from './PostOptions'
-import {Link} from 'react-router'
+import {Link, useNavigate} from 'react-router'
 import {useState} from 'react'
 
-const hostname = window.location.hostname;
+const hostname = window.location.hostname === "localhost" ? "localhost:5173" : window.location.hostname;
 
 function PostTime({dateInfo}) {
     const date = new Date(dateInfo);
@@ -19,6 +19,7 @@ function PostTime({dateInfo}) {
 
 function Post({displayMode, postText, userName, userID, postID, datePosted, metrics, url, reposted, handlePostAction, handleViews, handleDelete}) {
     const [clickMoreOptions, setClickMoreOptions] = useState(false);
+    const navigate = useNavigate();
     
     return (
         <div className={`post cursor-pointer border ${displayMode === "Light" ? "border-gray-300" : "border-gray-700"}`}>
@@ -28,7 +29,7 @@ function Post({displayMode, postText, userName, userID, postID, datePosted, metr
                     You reposted                                                                
                     </div>
                     <div className='flex w-full gap-[10px]'>
-                        <div className={`profile-img  ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"}`}>
+                        <div onClick={() => navigate(`/${userID}`)} className={`profile-img  ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"}`}>
                                         B
                                         </div>
                         <div className='flex flex-col w-full'>
@@ -49,7 +50,7 @@ function Post({displayMode, postText, userName, userID, postID, datePosted, metr
                                     Delete
                                 </div>
                             </div>
-                            <Link className={`post-content w-full ${displayMode === "Light" ? "text-black" : "text-white"}`} to={url === "" ?`http://${hostname}:5173/${userID}/status/${postID}` : url}>
+                            <Link className={`post-content w-full ${displayMode === "Light" ? "text-black" : "text-white"}`} to={url === "" ?`http://${hostname}/${userID}/status/${postID}` : url}>
                                 {postText}
                             </Link>
                         </div>
