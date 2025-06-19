@@ -6,7 +6,7 @@ import PostPage from './components/PostPage'
 import ProfilePage from './components/ProfilePage'
 import DailiesPage from './components/DailiesPage'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import axios from 'axios'
 import { useLocalStorage } from "@uidotdev/usehooks";
 
@@ -14,16 +14,17 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 function App() {
   const [posts, setPosts] = useLocalStorage("posts", localStorage.getItem("posts"));
   const [users, setUsers] = useLocalStorage("users", localStorage.getItem("users"));
-  const [displayMode, setDisplayMode] = useState("Light");
+  const [displayMode, setDisplayMode] = useLocalStorage("displayMode", localStorage.getItem("displayMode"));
 
   useEffect(() => {
     async function fetchAPI() {
       const postsResponse = await axios.get("http://localhost:8080/postsData");
       const usersResponse = await axios.get("http://localhost:8080/usersData");
       
-      if (posts === null && users === null) {
+      if (posts === null && users === null && displayMode === null) {
         setPosts(postsResponse.data);
         setUsers(usersResponse.data);
+        setDisplayMode("Light");
       }
     }
     fetchAPI();
@@ -147,11 +148,11 @@ function addPost(allPosts, setPosts, contentInfo, randomNum) {
         <div className='flex flex-grow-2'>
           <Routes>
             <Route path="/" element={<TimeLine displayMode={displayMode} generateRandomNum={generateRandomNum} addPost={addPost} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} posts={posts} users={users} />} />
-            <Route path="/dailies" element={<DailiesPage />} />
-            <Route path="/:profile" element={<ProfilePage handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} posts={posts} users={users}/>} />
+            <Route path="/dailies" element={<DailiesPage displayMode={displayMode}/>} />
+            <Route path="/:profile" element={<ProfilePage displayMode={displayMode} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} posts={posts} users={users}/>} />
             <Route path="/:userID/status/:postID" element={<PostPage displayMode={displayMode} posts={posts} users={users} setPosts={setPosts} generateRandomNum={generateRandomNum} addPost={addPost} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} />} />
           </Routes>
-          <TrendingOptions/>
+          <TrendingOptions displayMode={displayMode}/>
         </div>
       </div>
   )

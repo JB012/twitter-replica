@@ -75,14 +75,14 @@ function ProfilePosts({postTab, user, posts, handleDelete, handlePostAction, han
     }
 }
 
-function ProfilePage({handleDelete, handlePostAction, handleViews, posts, users}) {
+function ProfilePage({displayMode, handleDelete, handlePostAction, handleViews, posts, users}) {
     const {profile} = useParams();
     const user = users.find((user) => user.userID === profile);
     const [postTab, setPostTab] = useState("Posts");
     const navigate = useNavigate();
 
     return (
-        <div className="light-mode-middle-container">
+        <div className="light-mode-middle-container border border-gray-500 text-gray-500">
             <div className="flex flex-col relative">
                 <div className="flex gap-[20px] px-1.5 py-1.5 w-full">
                     <div className='font-bold text-2xl cursor-pointer' onClick={() => navigate(-1)}>&larr;</div>
@@ -92,17 +92,17 @@ function ProfilePage({handleDelete, handlePostAction, handleViews, posts, users}
                         </div>
                     </div>
                 </div>
-                <div className="w-full bg-black h-[200px] -z-1">
+                <div className={`w-full text-center bg-gray-600 text-gray-600 h-[200px] -z-1`}>
                     h
                 </div>
                 <div className='flex w-full justify-between'>
-                    <div className='border border-solid border-amber-200 min-w-30 h-30 rounded-full absolute top-47 left-5 text-amber-50'>
+                    <div className={`border text-center border-solid ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"} min-w-30 h-30 rounded-full absolute top-47 left-5 text-amber-50`}>
                         A
                     </div>
-                    <button className='border rounded-full absolute right-5 top-65 px-4 py-2 pt-1.5 font-semibold'>Edit Profile</button>
+                    <button className={`border ${displayMode === "Light" ? "text-black" : "text-white"} rounded-full absolute right-5 top-65 px-4 py-2 pt-1.5 font-semibold`}>Edit Profile</button>
                 </div>
                 <div className='flex flex-col pt-18 px-2.5'>
-                    <div className='text-xl font-bold'>
+                    <div className={`text-xl font-bold ${displayMode === "Light" ? "text-black" : "text-white"}`}>
                         {user.name}
                     </div>
                     <div>
@@ -113,18 +113,18 @@ function ProfilePage({handleDelete, handlePostAction, handleViews, posts, users}
                     </div>
                     <div className='flex gap-3'>
                         <div>
-                            <strong>{user.followingNum}</strong> Following
+                            <strong className={displayMode === "Light" ? "text-black": "text-white"}>{user.followingNum}</strong> Following
                         </div>
                         <div>
-                            <strong>{user.followersNum}</strong> Followers
+                            <strong className={displayMode === "Light" ? "text-black": "text-white"}>{user.followersNum}</strong> Followers
                         </div>
                     </div>
                 </div>
-                <div className='flex w-full justify-between pt-5'>
-                    <button className={`profile-toggle-page-btn ${postTab === "Post" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Posts")}>Post</button>
-                    <button className={`profile-toggle-page-btn ${postTab === "Replies" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Replies")}>Replies</button>
-                    <button className={`profile-toggle-page-btn ${postTab === "Media" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Media")}>Media</button>
-                    <button className={`profile-toggle-page-btn ${postTab === "Likes" ? "bg-blue-50" : ""}`} onClick={() => setPostTab("Likes")}>Likes</button>
+                <div className='flex w-full justify-between pt-5 text-gray-500'>
+                    <button className={`profile-toggle-page-btn ${postTab === "Posts" ? `${displayMode === "Light" ? "text-black" : "text-white"}` : ""}`} onClick={() => setPostTab("Posts")}>Post</button>
+                    <button className={`profile-toggle-page-btn ${postTab === "Replies" ? `${displayMode === "Light" ? "text-black" : "text-white"}` : ""}`} onClick={() => setPostTab("Replies")}>Replies</button>
+                    <button className={`profile-toggle-page-btn ${postTab === "Media" ? `${displayMode === "Light" ? "text-black" : "text-white"}` : ""}`} onClick={() => setPostTab("Media")}>Media</button>
+                    <button className={`profile-toggle-page-btn ${postTab === "Likes" ? `${displayMode === "Light" ? "text-black" : "text-white"}` : ""}`} onClick={() => setPostTab("Likes")}>Likes</button>
                 </div>
                 <ProfilePosts posts={posts} postTab={postTab} user={user} handleDelete={handleDelete} handlePostAction={handlePostAction} handleViews={handleViews} />
                 

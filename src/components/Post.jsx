@@ -27,8 +27,8 @@ function Post({displayMode, postText, userName, userID, postID, datePosted, metr
                     <div className={reposted === false ? "hidden" : "flex w-full px-15 text-gray-600"}>
                     You reposted                                                                
                     </div>
-                    <div className='flex w-full px-2.5 gap-[10px]'>
-                        <div className='profile-img'>
+                    <div className='flex w-full gap-[10px]'>
+                        <div className={`profile-img  ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"}`}>
                                         B
                                         </div>
                         <div className='flex flex-col w-full'>
@@ -42,7 +42,7 @@ function Post({displayMode, postText, userName, userID, postID, datePosted, metr
                                     </div>
                                     <PostTime displayMode={displayMode} dateInfo={datePosted}/>
                                 </div>
-                                <div className='ml-autotext-gray-700' onClick={() => setClickMoreOptions(!clickMoreOptions)}>
+                                <div className='ml-auto text-gray-500' onClick={() => setClickMoreOptions(!clickMoreOptions)}>
                                 &#8230;
                                 </div>
                                 <div onClick={() => handleDelete(postID)} style={{"display": clickMoreOptions === false ? "none" : "block"}} className='border rounded-full border-none shadow-xl/30 top-2.5 absolute right-3 bg-white'>

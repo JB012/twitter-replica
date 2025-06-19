@@ -21,9 +21,9 @@ function handleCheck(action) {
     return false;
 }
 
-function DailiesPage() {
+function DailiesPage({displayMode}) {
     return (
-        <div className="light-mode-middle-container px-2.5">
+        <div className={`light-mode-middle-container px-2.5 border border-gray-500 ${displayMode === "Light" ? "text-black" : "text-white"}`}>
             <div className="py-2.5 text-xl font-bold">
                 Dailies
             </div>

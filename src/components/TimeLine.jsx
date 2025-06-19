@@ -16,7 +16,7 @@ function TimeLine({displayMode, posts, handleDelete, handlePostAction, handleVie
         </div>
         <div className='flex flex-col justify-center p-[10px]'>
           <div className='flex'>
-            <div className='profile-img'>
+            <div className={`profile-img  ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"}`}>
               A
             </div>
             <form className='w-full flex flex-col' action={() => {if(input !== "") addPost(allPosts, setPosts, input, generateRandomNum()); setInput("")}}>

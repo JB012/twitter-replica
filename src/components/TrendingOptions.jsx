@@ -1,10 +1,10 @@
 import '../index.css'
 
-function TrendingOptions() {
+function TrendingOptions({displayMode}) {
     return (
        <div id="home-right">
-        <input className='pl-2.5 pt-2.5' placeholder="Search" />
-        <div className="h-[460px] side-view-container">
+        <input className={`pl-2.5 rounded-xl border border-gray-500 ${displayMode === "Light" ? "placeholder-black text-black" : "placeholder-white text-white"}`} placeholder="Search" />
+        <div className={`h-[460px] border border-gray-500 side-view-container ${displayMode === "Light" ? "text-black" : "text-white"}`}>
             <div className='text-2xl font-bold pb-1'>Trends</div>
             <div className='flex flex-col h-full justify-around'>
               <div className='trend-item'>
@@ -31,18 +31,18 @@ function TrendingOptions() {
               </div>
             </div>
         </div>  
-        <div className='sticky top-0 h-[30vh] side-view-container'>
+        <div className={`sticky top-0 h-[30vh] border border-gray-500 side-view-container ${displayMode === "Light" ? "text-black" : "text-white"}`}>
             <div className='text-xl font-bold pb-1'>Suggested Follows</div>
             <div className='w-full'>
               <div className='flex gap-[10px]'>
-                  <div className='profile-img self-center'>
+                  <div className={`profile-img self-center ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"}`}>
                     B
                   </div>
                   <div className='flex flex-col'>
                     <div>name</div>
                     <div>@name</div>
                   </div>
-                  <button className='ml-auto light-mode-btn'>Follow</button>
+                  <button className={`ml-auto ${displayMode === "Light" ? "light-mode-btn" : "dark-mode-btn"}`}>Follow</button>
               </div>
             </div>
         </div>       

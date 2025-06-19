@@ -75,6 +75,7 @@
 
 .profile-img {
   border: 1px solid black;
+  text-align: center;
   min-width: 44px;
   height: 44px;
   border-radius: 100%;
@@ -89,6 +90,14 @@
 .light-mode-btn {
   background-color: black;
   color: white;
+  border-radius: 50px;
+  padding: 5px 20px;
+  font-weight: bold;
+}
+
+.dark-mode-btn {
+  background-color: white;
+  color: black;
   border-radius: 50px;
   padding: 5px 20px;
   font-weight: bold;
@@ -115,7 +124,6 @@
 .side-view-container {
   display: flex;
   flex-direction: column;
-  border: var(--light-mode-border);
   border-radius: 20px;
   padding: 15px;
   width: 100%;
@@ -133,7 +141,7 @@
 }
 
 .trend-sub {
-  color: gray;
+  color: rgb(95, 95, 95);
   font-size: smaller;
 }
 

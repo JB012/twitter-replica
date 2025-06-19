@@ -67,7 +67,13 @@ function PostOptions({expanded, comments, reposts, bookmarks, likes, views, post
     return(
         expanded === false ?
     (<div className='flex px-2.5'>
-        <div className={`post-option-item hover:text-blue-300 ${handleTextColor(postID, findUser, "commented")}}`}> <div>&#128488;</div> <div className='text-gray-700'>{comments}</div></div>
+        <div className={`post-option-item hover:text-blue-300 ${handleTextColor(postID, findUser, "commented")}}`}> 
+            <div>
+            <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 6.25 6.25 L 20.25 6.25 L 20.25 15.25 16.25 15.25 17.25 19.25 14.25 15.25 6.25 15.25 Z" stroke="rgb(76, 76, 76)" />
+            </svg>
+            </div> 
+            <div className='text-gray-700'>{comments}</div></div>
         <div className={`post-option-item hover:text-green-500 ${handleTextColor(postID, findUser, "reposted")}`} onClick={() => handlePostAction(postID, "reposted")}> <div>&#10227;</div> <div>{reposts}</div></div>
         <div className={`post-option-item hover:text-red-500 ${handleTextColor(postID, findUser, "liked")}`} onClick={() => handlePostAction(postID, "liked")}> <div>&hearts;</div> <div>{likes}</div></div>
         <div className={`post-option-item hover:text-blue-300`}> 
@@ -100,10 +106,12 @@ function PostOptions({expanded, comments, reposts, bookmarks, likes, views, post
             </div>
         </div>
     </div>) :
-    ( <div className='flex gap-[70px]'>
+    <div className='flex gap-[70px] cursor-pointer'>
         <div className="post-option-item hover:text-blue-300 text-gray-700"> 
             <div>
-            &#128488;
+            <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 6.25 6.25 L 20.25 6.25 L 20.25 15.25 16.25 15.25 17.25 19.25 14.25 15.25 6.25 15.25 Z" stroke="rgb(76, 76, 76)" />
+            </svg>
             </div>
             <div>
                 {comments}
@@ -131,7 +139,7 @@ function PostOptions({expanded, comments, reposts, bookmarks, likes, views, post
             </div>
         </div>
     </div>
-    )
+    
     
     );
 }

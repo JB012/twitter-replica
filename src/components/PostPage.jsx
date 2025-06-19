@@ -97,7 +97,7 @@ function PostPage({displayMode, posts, setPosts, users, handlePostAction, genera
                 <div className='flex gap-[10px] w-full'>
                     <div className='flex flex-col pt-[20px] w-full'>
                         <div className='flex gap-[10px] w-full'>
-                            <div className='profile-img self-center'>
+                            <div className={`profile-img self-center ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"}`}>
                                 B
                             </div>
                             <div className='user-display-container w-full'>
@@ -121,7 +121,7 @@ function PostPage({displayMode, posts, setPosts, users, handlePostAction, genera
             </div>
             <div className="px-2.5">
                 <div className="flex py-2 post gap-[10px]">
-                    <div className="profile-img">
+                    <div className={`profile-img  ${displayMode === "Light" ? "border-black text-black bg-black" : "border-white text-white bg-white"}`}>
                         A
                     </div>
                     <form className="flex flex-col w-full" action={() => {addComment(postInfo, posts, setPosts, input, generateRandomNum, addPost); setInput("")}}>
