@@ -83,6 +83,7 @@
 .page-option-item {
   display: flex;
   gap: 15px;
+  align-items: center;
 }
 
 .light-mode-btn {
@@ -94,7 +95,6 @@
 }
 
 .post {
-  border: var(--light-mode-border);
   border-right: none;
   border-left: none;
   display: flex;  
@@ -109,7 +109,6 @@
 
 .light-mode-middle-container {
   margin: 0 20px 0;
-  border: var(--light-mode-border);
   width: 577.550px;
 }
 
