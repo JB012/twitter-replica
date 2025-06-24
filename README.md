@@ -1,7 +1,7 @@
 # Twitter Replica
 > Social media web application that replicates Twitter's design.
  
-Demo: 
+Demo: https://twitter-replica-one.vercel.app
 
 ## How It's Used:
 Tech Used:
@@ -34,7 +34,7 @@ Tech Used:
 
 ## How It Runs
 
-Open two terminals. In one terminal, enter "node server" in /src. In the other terminal enter *npm run dev* in /.
+In the root directory, enter *npm run dev*.
 
 ## What I Learned
 
