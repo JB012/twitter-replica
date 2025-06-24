@@ -5,10 +5,11 @@ import TimeLine from './components/TimeLine'
 import PostPage from './components/PostPage'
 import ProfilePage from './components/ProfilePage'
 import DailiesPage from './components/DailiesPage'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import { useEffect } from 'react'
-import axios from 'axios'
 import { useLocalStorage } from "@uidotdev/usehooks";
+import postsData from '../data/posts.json'
+import usersData from '../data/users.json'
 
 
 function App() {
@@ -17,17 +18,15 @@ function App() {
   const [displayMode, setDisplayMode] = useLocalStorage("displayMode", localStorage.getItem("displayMode"));
 
   useEffect(() => {
-    async function fetchAPI() {
-      const postsResponse = await axios.get("http://localhost:8080/postsData");
-      const usersResponse = await axios.get("http://localhost:8080/usersData");
-      
+    async function initialSettings() {
       if (posts === null && users === null && displayMode === null) {
-        setPosts(postsResponse.data);
-        setUsers(usersResponse.data);
+        setPosts(postsData);
+        setUsers(usersData);
         setDisplayMode("Light");
       }
     }
-    fetchAPI();
+
+    initialSettings();
     
     const html = document.querySelector("html");
     html.style.backgroundColor = displayMode === "Light" ? "white" : "black";
