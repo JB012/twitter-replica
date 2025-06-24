@@ -18,5 +18,3 @@ app.get("/usersData", (req, res) => {
 
 
 app.listen(portNumber);
-
-console.log(`http://localhost:${portNumber}`);
